@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import "./App.css";
 
@@ -16,6 +16,8 @@ function App() {
 
   const handleMinify = (curlReq: string) => {
     setCurlState(curlReq);
+
+    curlReq = curlReq.replaceAll("--header", "-H");
 
     const headers = curlReq.match(/-H '.*?'/g) || [];
     const necessaryHeaders = headers.filter((header) => {
@@ -35,6 +37,7 @@ function App() {
       .replace(/(\\?\n)+(?!\s*-H)/g, "")
       .replace(/\\/g, "");
     minifiedCurl = minifiedCurl.replace(/--compressed/g, "\n--compressed");
+    minifiedCurl = minifiedCurl.replace(/--data/g, "\n--data");
 
     setMinifiedCurl(minifiedCurl);
   };
