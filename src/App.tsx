@@ -2,7 +2,12 @@ import { useState } from "react";
 
 import "./App.css";
 
-const headersList = ["accept", "authorization", "x-glofox-branch-id"];
+const headersList = [
+  "accept",
+  "authorization",
+  "x-glofox-branch-id",
+  "glofox-api-token",
+];
 
 function App() {
   const [curlState, setCurlState] = useState("");
